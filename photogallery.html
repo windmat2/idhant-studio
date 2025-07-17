@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Idhant's Photo Gallery</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      background-image: url("background.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+
+    }
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1.5em;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 20px;
+      padding: 2em;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto; 
+      max-height: 100%
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: white;
+      padding: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Idhant's Photo Gallery</h1>
+    <p>A showcase of musical moments and inspirations</p>
+  </header>
+
+  <div class="gallery">
+    <img src="IMG_1587.jpg" alt="Performance 1">
+    <img src="IMG_1586.jpg" alt="P">
+    <img src="IMG_1585.jpg" alt="S">
+    <img src="IMG_1584.jpg" alt="C">
+    </div>
+
+  <footer>
+    <p>© 2025 Idhant's Studio. All photos © Idhant Shenvi Kuvelkar</p>
+  </footer>
+
+</body>
+</html>
