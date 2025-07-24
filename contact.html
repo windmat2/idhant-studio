@@ -33,16 +33,7 @@
 }
 
 
-nav {
-      background-color: #444;
-      padding: 0.5em;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 1em;
-      text-decoration: none;
-}
+
 
 
     header h1 {
@@ -139,6 +130,73 @@ nav {
       padding: 1.2em;
       margin-top: 3em;
     }
+
+
+     :root {
+      --bg-color: #2e3a59;
+      --text-color: white;
+      --hover-color: #5568aa;
+    }
+
+    
+    nav {
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      position: relative;
+      z-index: 100;
+    }
+
+    
+
+    .menu-toggle {
+      font-size: 1.6em;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: rgba(46, 58, 89, 0.85); /* Slight transparency */
+      overflow: hidden;
+      max-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 0 2em;
+      transition: max-height 0.3s ease;
+    }
+
+    .menu-links.open {
+      max-height: 300px;
+      padding: 1em 2em;
+    }
+
+    .menu-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 0.6em 0;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .menu-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: var(--hover-color);
+      bottom: -4px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    .menu-links a:hover::after {
+      width: 100%;
   </style>
 </head>
 <body>
