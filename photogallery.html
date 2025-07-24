@@ -140,7 +140,20 @@
       <a href="contact.html" onclick="closeMenu()">Contact</a>
     </div>
   </nav>
-   
+
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("open");
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.remove("open");
+    }
+  </script>
+
 
   <div class="gallery">
     <img src="IMG_1587.jpg" alt="Performance 1" style=" border-radius: 25px;  box-shadow: 6px 4px 10px rgba(13,13,13,13.25);  transition: transform 0.3s ease;">
