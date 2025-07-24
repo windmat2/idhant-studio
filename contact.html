@@ -26,7 +26,7 @@
     }
 
     header {
-      background-color: #222;
+      background-color: #1d2640;
       color: white;
       padding: 1em 2em;
       text-align: center;
@@ -206,12 +206,28 @@
     <p>Your gateway to elegant, expressive music</p>
   </header>
   <nav>
-    <a href="index.html">Homepage</a>
-    <a href="#music">My Music</a>
-    <a href="#contact">Contact</a>
-    <a href="photogallery.html">Certificates</a>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="menu-links" id="menu">
+      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#music" onclick="closeMenu()">My Music</a>
+      <a href="photogallery.html" onclick="closeMenu()">Gallery</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
+    </div>
   </nav>
 
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("open");
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.remove("open");
+    }
+  </script>
 
   <div class="container">
     <div class="contact-form">
