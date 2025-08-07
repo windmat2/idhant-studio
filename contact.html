@@ -244,27 +244,49 @@
     <h1>Welcome to Idhant's Studio</h1>
     <p>Your gateway to elegant, expressive music</p>
   </header>
-  <nav>
-
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+ <nav>
+    
+    <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()">☰</div>
     <div class="menu-links" id="menu">
-      <a href="index.html" onclick="closeMenu()">Home</a>
+      <a href="#home" onclick="closeMenu()">Home</a>
       <a href="#about" onclick="closeMenu()">About</a>
-      <a href="#music" onclick="closeMenu()">My Music</a>
-      <a href="photogallery.html" onclick="closeMenu()">Gallery</a>
-      <a href="contact.html" onclick="closeMenu()">Contact</a>
+      
+      <div class="has-submenu" onclick="toggleSubmenu(this)">
+        <a href="#music">Photos ▾</a>
+        <div class="submenu">
+          <a href="#classical" onclick="closeMenu()">certificates</a>
+          <a href="#jazz" onclick="closeMenu()">Extracurriculars</a>
+          <a href="#originals" onclick="closeMenu()">me</a>
+        </div>
+      </div>
+
+      <a href="#gallery" onclick="closeMenu()">My music</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
     </div>
   </nav>
 
   <script>
     function toggleMenu() {
       const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
       menu.classList.toggle("open");
+      toggleBtn.classList.toggle("open");
+      toggleBtn.textContent = menu.classList.contains("open") ? "✖" : "☰";
     }
 
     function closeMenu() {
       const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
       menu.classList.remove("open");
+      toggleBtn.classList.remove("open");
+      toggleBtn.textContent = "☰";
+
+      // Close submenu too
+      document.querySelectorAll(".has-submenu").forEach(el => el.classList.remove("open"));
+    }
+
+    function toggleSubmenu(element) {
+      element.classList.toggle("open");
     }
   </script>
 
@@ -314,4 +336,5 @@
 
 </body>
 </html>
+
 
