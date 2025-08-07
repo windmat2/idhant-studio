@@ -30,8 +30,9 @@
     section {
       background-color: white;
       padding: 40px;
-      margin: 1.5em 0;
-      width: 90%;
+      margin: 10.5em 0;
+      width: 400px;
+      height: 500px;
       max-width: 600px;
       border: 2px solid black;
       border-radius: 25px;
@@ -45,29 +46,39 @@
       margin-top: 2em;
     }
 
-    :root {
+   :root {
       --bg-color: #2e3a59;
       --text-color: white;
-      --hover-color: #5568aa;
+      --hover-color: #a3c4f3;
     }
 
-    
-    nav {
+       nav {
       background-color: var(--bg-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1em 2em;
-      position: relative;
-      z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    
+    .menu-logo {
+      font-size: 1.5em;
+      color: var(--text-color);
+      font-weight: bold;
+    }
 
     .menu-toggle {
       font-size: 1.6em;
       color: var(--text-color);
       cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.open {
+      transform: rotate(90deg);
     }
 
     .menu-links {
@@ -75,25 +86,29 @@
       top: 100%;
       left: 0;
       right: 0;
-      background-color: rgba(46, 58, 89, 0.85); /* Slight transparency */
+      background-color: rgba(29, 38, 64, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       overflow: hidden;
       max-height: 0;
       display: flex;
       flex-direction: column;
       padding: 0 2em;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.4s ease, padding 0.3s ease;
     }
 
     .menu-links.open {
-      max-height: 300px;
+      max-height: 400px;
       padding: 1em 2em;
     }
 
     .menu-links a {
+      font-family: 'Playfair Display', serif;
       color: var(--text-color);
       text-decoration: none;
       padding: 0.6em 0;
       font-weight: 500;
+      font-size: 1.1em;
       position: relative;
     }
 
@@ -112,6 +127,30 @@
       width: 100%;
     }
 
+    /* Submenu styles */
+    .has-submenu {
+      position: relative;
+    }
+
+    .submenu {
+      list-style: none;
+      padding-left: 1em;
+      margin: 0.3em 0 0.6em 0;
+      display: none;
+      flex-direction: column;
+    }
+
+    .submenu a {
+      font-size: 0.95em;
+      padding: 0.4em 0;
+      color: var(--hover-color);
+    }
+
+    .has-submenu.open .submenu {
+      display: flex;
+    }
+
+
   </style>
 </head>
 <body>
@@ -119,52 +158,88 @@
     <h1>Welcome to Idhant's Studio</h1>
     <p>Your gateway to elegant, expressive music</p>
   </header>
-  <nav>
 
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav>
+    
+    <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()">☰</div>
     <div class="menu-links" id="menu">
       <a href="#home" onclick="closeMenu()">Home</a>
       <a href="#about" onclick="closeMenu()">About</a>
-      <a href="#music" onclick="closeMenu()">My Music</a>
-      <a href="photogallery.html" onclick="closeMenu()">Gallery</a>
-      <a href="contact.html" onclick="closeMenu()">Contact</a>
+      
+      <div class="has-submenu" onclick="toggleSubmenu(this)">
+        <a href="#music">Photos ▾</a>
+        <div class="submenu">
+          <a href="#classical" onclick="closeMenu()">certificates</a>
+          <a href="#jazz" onclick="closeMenu()">Extracurriculars</a>
+          <a href="#originals" onclick="closeMenu()">me</a>
+        </div>
+      </div>
+
+      <a href="#gallery" onclick="closeMenu()">My music</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
     </div>
   </nav>
 
   <script>
     function toggleMenu() {
       const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
       menu.classList.toggle("open");
+      toggleBtn.classList.toggle("open");
+      toggleBtn.textContent = menu.classList.contains("open") ? "✖" : "☰";
     }
 
     function closeMenu() {
       const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
       menu.classList.remove("open");
+      toggleBtn.classList.remove("open");
+      toggleBtn.textContent = "☰";
+
+      // Close submenu too
+      document.querySelectorAll(".has-submenu").forEach(el => el.classList.remove("open"));
+    }
+
+    function toggleSubmenu(element) {
+      element.classList.toggle("open");
     }
   </script>
 
-  <div class="content">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hello! I'm Idhant Shenvi Kuvelkar and I love playing piano and exploring new sounds. Whether it's classical pieces or modern melodies, music brings me joy and focus. I am also attending <a href="https://www.simsbury.k12.ct.us/schools/shs" target="_blank">Simsbury High School</a> </p>
-    </section>
 
-    <section id="music">
-      <h2>My Music</h2>
-      <p>Check out some of my favorite performances:</p>
-      <ul>
-        <li><a href="https://www.instagram.com/reel/DLv33CKtJnS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">Moonlight Sonata</a> </li>
-        <li><a href="https://www.instagram.com/reel/DLBHmPqS2Z8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">interstellar</a></li>
-        <li><a href="https://www.soundslice.com/slices/9Jzqc/" target="_blank">My Original Composition</a></li>
-      </ul>
-    </section>
+<section style= "position: relative; left: 45%;">
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Interested in lessons or have any questions? Feel free to use the <a href="contact.html">Contact Page</a>. Reach out via email at <a href="mailto:idhantkuvelkar@icloud.com">idhantkuvelkar@icloud.com</a> or call me at 860-534-1956.</p>
-    </section>
-  </div>
+<center>
+<h1>    Hi i'm Idhant<h1>
+</center>
 
+
+</section>
+
+
+<img  src="Idhant.jpg" alt="Idhant" style="width: 425px; height: 560px; border-radius: 25px; position: absolute; left: 25%; bottom: -6%; box-shadow: -7px 10px 17px rgba(0,0,0,0.75);"  > 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   <footer>
     <p>© 2025 Idhant's Studio. All rights reserved.</p>
   </footer>
