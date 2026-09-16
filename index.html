@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>Idhant's Studio</title>
- 
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,29 +14,34 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       background-color: #1d2640;
       color: white;
       padding: 1em 2em;
       text-align: center;
     }
-    
+
     .content {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2em;
     }
+
     section {
       background-color: white;
       padding: 40px;
       width: 400px;
-      height: 500px;
+      height: auto;
       max-width: 600px;
       border: 2px solid black;
       border-radius: 25px;
       box-shadow: -7px 10px 17px rgba(0,0,0,0.75);
+      margin: 2em auto;
+      text-align: center;
     }
+
     footer {
       background-color: #222;
       color: white;
@@ -45,13 +50,13 @@
       margin-top: 2em;
     }
 
-   :root {
+    :root {
       --bg-color: #2e3a59;
       --text-color: white;
       --hover-color: #a3c4f3;
     }
 
-       nav {
+    nav {
       background-color: var(--bg-color);
       display: flex;
       justify-content: space-between;
@@ -87,7 +92,6 @@
       right: 0;
       background-color: rgba(29, 38, 64, 0.6);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       overflow: hidden;
       max-height: 0;
       display: flex;
@@ -126,7 +130,6 @@
       width: 100%;
     }
 
-    /* Submenu styles */
     .has-submenu {
       position: relative;
     }
@@ -149,33 +152,41 @@
       display: flex;
     }
 
+    .profile-img {
+      width: 425px;
+      height: 560px;
+      border-radius: 25px;
+      box-shadow: -7px 10px 17px rgba(0,0,0,0.75);
+      display: block;
+      margin: 0 auto;
+    }
 
   </style>
 </head>
+
 <body>
+
   <header>
     <h1>Welcome to Idhant's Studio</h1>
     <p>Your gateway to elegant, expressive music</p>
   </header>
 
-
   <nav>
-    
     <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()">☰</div>
     <div class="menu-links" id="menu">
       <a href="#home" onclick="closeMenu()">Home</a>
       <a href="#about" onclick="closeMenu()">About</a>
-      
+
       <div class="has-submenu" onclick="toggleSubmenu(this)">
         <a href="#music">Photos ▾</a>
         <div class="submenu">
-          <a href="photogallery.html" onclick="closeMenu()">certificates</a>
+          <a href="photogallery.html" onclick="closeMenu()">Certificates</a>
           <a href="#jazz" onclick="closeMenu()">Extracurriculars</a>
-          <a href="#originals" onclick="closeMenu()">me</a>
+          <a href="#originals" onclick="closeMenu()">Me</a>
         </div>
       </div>
 
-      <a href="#gallery" onclick="closeMenu()">My music</a>
+      <a href="#gallery" onclick="closeMenu()">My Music</a>
       <a href="contact.html" onclick="closeMenu()">Contact</a>
     </div>
   </nav>
@@ -195,8 +206,6 @@
       menu.classList.remove("open");
       toggleBtn.classList.remove("open");
       toggleBtn.textContent = "☰";
-
-      // Close submenu too
       document.querySelectorAll(".has-submenu").forEach(el => el.classList.remove("open"));
     }
 
@@ -205,53 +214,15 @@
     }
   </script>
 
+  <section>
+    <h1>Hi, I'm Idhant</h1>
+  </section>
 
-<section style= "position: relative; left: 45%; top; 10.05em 0;">
+  <img src="Idhant.JPG" alt="Idhant" class="profile-img">
 
-<center>
-<h1>    Hi i'm Idhant<h1>
-</center>
-
-
-</section>
-
-
-<img  src="Idhant.JPG" alt="Idhant" style="width: 425px; height: 560px; border-radius: 25px; position: sticky; left: 30%;top: 25%; box-shadow: -7px 10px 17px rgba(0,0,0,0.75);"  > 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   <footer>
     <p>© 2025 Idhant's Studio. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
