@@ -3,77 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <title>Idhant's Photo Gallery</title>
+
   <style>
+    :root {
+      --bg-color: #2e3a59;
+      --text-color: white;
+      --hover-color: #a3c4f3;
+      --white: #fff;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f8f8;
       margin: 0;
       padding: 0;
       background-image: url("background.jpg");
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
-
-   
-
-
+      color: #333;
     }
+
     header {
       background-color: #1d2640;
       color: white;
       text-align: center;
       padding: 1.5em;
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 30px;
-      padding: 2em;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto; 
-      max-height: 100%
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    footer {
-      text-align: center;
-      background-color: #333;
-      color: white;
-      padding: 1em;
-    }
 
-
-:root {
-      --bg-color: #2e3a59;
-      --text-color: white;
-      --hover-color: #5568aa;
-    }
-
-    
+    /* Navigation */
     nav {
       background-color: var(--bg-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1em 2em;
-      position: relative;
-      z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
-    
 
     .menu-toggle {
       font-size: 1.6em;
       color: var(--text-color);
       cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.open {
+      transform: rotate(90deg);
     }
 
     .menu-links {
@@ -81,25 +59,28 @@
       top: 100%;
       left: 0;
       right: 0;
-      background-color: rgba(46, 58, 89, 0.85); /* Slight transparency */
+      background-color: rgba(29, 38, 64, 0.6);
+      backdrop-filter: blur(10px);
       overflow: hidden;
       max-height: 0;
       display: flex;
       flex-direction: column;
       padding: 0 2em;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.4s ease, padding 0.3s ease;
     }
 
     .menu-links.open {
-      max-height: 300px;
+      max-height: 400px;
       padding: 1em 2em;
     }
 
     .menu-links a {
+      font-family: 'Playfair Display', serif;
       color: var(--text-color);
       text-decoration: none;
       padding: 0.6em 0;
       font-weight: 500;
+      font-size: 1.1em;
       position: relative;
     }
 
@@ -117,50 +98,119 @@
     .menu-links a:hover::after {
       width: 100%;
     }
-    
 
-    
+    /* Submenu */
+    .has-submenu {
+      position: relative;
+    }
+
+    .submenu {
+      list-style: none;
+      padding-left: 1em;
+      margin: 0.3em 0 0.6em 0;
+      display: none;
+      flex-direction: column;
+    }
+
+    .submenu a {
+      font-size: 0.95em;
+      padding: 0.4em 0;
+      color: var(--hover-color);
+    }
+
+    .has-submenu.open .submenu {
+      display: flex;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      padding: 2em;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: -7px 10px 17px rgba(0,0,0,0.75);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      background-color: #1d2640;
+      color: white;
+      padding: 1.2em;
+      margin-top: 2em;
+    }
   </style>
 </head>
+
 <body>
 
- <header>
+  <header>
     <h1>Welcome to Idhant's Studio</h1>
     <p>Your gateway to elegant, expressive music</p>
   </header>
 
- <nav>
+  <nav>
+    <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()">☰</div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <div class="menu-links" id="menu">
       <a href="index.html" onclick="closeMenu()">Home</a>
-      <a href="#about" onclick="closeMenu()">About</a>
-      <a href="#music" onclick="closeMenu()">My Music</a>
-      <a href="photogallery.html" onclick="closeMenu()">Gallery</a>
+      <a href="about.html" onclick="closeMenu()">About</a>
+
+      <div class="has-submenu" onclick="toggleSubmenu(this)">
+        <a href="#photos">Photos ▾</a>
+        <div class="submenu">
+          <a href="photogallery.html" onclick="closeMenu()">Certificates</a>
+          <a href="extracurriculars.html" onclick="closeMenu()">Extracurriculars</a>
+          <a href="me.html" onclick="closeMenu()">Me</a>
+        </div>
+      </div>
+
+      <a href="music.html" onclick="closeMenu()">My Music</a>
       <a href="contact.html" onclick="closeMenu()">Contact</a>
     </div>
   </nav>
 
-
   <script>
     function toggleMenu() {
       const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
       menu.classList.toggle("open");
+      toggleBtn.classList.toggle("open");
+      toggleBtn.textContent = menu.classList.contains("open") ? "✖" : "☰";
     }
 
     function closeMenu() {
       const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
       menu.classList.remove("open");
+      toggleBtn.classList.remove("open");
+      toggleBtn.textContent = "☰";
+      document.querySelectorAll(".has-submenu").forEach(el => el.classList.remove("open"));
+    }
+
+    function toggleSubmenu(element) {
+      element.classList.toggle("open");
     }
   </script>
 
-
   <div class="gallery">
-    <img src="IMG_1587.jpg" alt="Performance 1" style=" border-radius: 25px;  box-shadow: 6px 4px 10px rgba(13,13,13,13.25);  transition: transform 0.3s ease;">
-    <img src="IMG_1586.jpg" alt="P" style=" border-radius: 25px;  box-shadow: 6px 4px 10px rgba(13,13,13,13.25);  transition: transform 0.3s ease;">
-    <img src="IMG_1585.jpg" alt="S" style=" border-radius: 25px;  box-shadow: 6px 4px 10px rgba(13,13,13,13.25);  transition: transform 0.3s ease;">
-    <img src="IMG_1584.jpg" alt="C" style=" border-radius: 25px;  box-shadow: 6px 4px 10px rgba(13,13,13,13.25);  transition: transform 0.3s ease;">
-    </div>
+    <img src="IMG_1587.jpg" alt="Performance 1">
+    <img src="IMG_1586.jpg" alt="Performance 2">
+    <img src="IMG_1585.jpg" alt="Performance 3">
+    <img src="IMG_1584.jpg" alt="Performance 4">
+  </div>
 
   <footer>
     <p>© 2025 Idhant's Studio. All photos © Idhant Shenvi Kuvelkar</p>
