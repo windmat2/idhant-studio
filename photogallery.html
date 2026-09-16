@@ -99,29 +99,6 @@
       width: 100%;
     }
 
-    /* Submenu */
-    .has-submenu {
-      position: relative;
-    }
-
-    .submenu {
-      list-style: none;
-      padding-left: 1em;
-      margin: 0.3em 0 0.6em 0;
-      display: none;
-      flex-direction: column;
-    }
-
-    .submenu a {
-      font-size: 0.95em;
-      padding: 0.4em 0;
-      color: var(--hover-color);
-    }
-
-    .has-submenu.open .submenu {
-      display: flex;
-    }
-
     /* Gallery */
     .gallery {
       display: grid;
@@ -138,10 +115,39 @@
       border-radius: 20px;
       box-shadow: -7px 10px 17px rgba(0,0,0,0.75);
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     footer {
@@ -205,12 +211,29 @@
     }
   </script>
 
+  <!-- Gallery -->
   <div class="gallery">
-    <img src="IMG_1587.jpg" alt="Performance 1">
-    <img src="IMG_1586.jpg" alt="Performance 2">
-    <img src="IMG_1584.jpg" alt="Performance 3">
-    <img src="IMG_1585.jpg" alt="Performance 4">
+    <img src="IMG_1587.jpg" alt="Performance 1" onclick="openLightbox(this.src)">
+    <img src="IMG_1586.jpg" alt="Performance 2" onclick="openLightbox(this.src)">
+    <img src="IMG_1584.jpg" alt="Performance 3" onclick="openLightbox(this.src)">
+    <img src="IMG_1585.jpg" alt="Performance 4" onclick="openLightbox(this.src)">
   </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
 
   <footer>
     <p>© 2025 Idhant's Studio. All photos © Idhant Shenvi Kuvelkar</p>
