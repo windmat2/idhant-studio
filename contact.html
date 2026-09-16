@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <title>Contact | Idhant's Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     :root {
       --primary-color: #2e3a59;
       --accent-color: #5568aa;
       --background-color: #f0f2f5;
       --white: #fff;
+      --bg-color: #2e3a59;
+      --text-color: white;
+      --hover-color: #a3c4f3;
     }
 
     body {
@@ -22,7 +26,6 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
-
     }
 
     header {
@@ -30,17 +33,105 @@
       color: white;
       padding: 1em 2em;
       text-align: center;
-}
-
-
-
-
+    }
 
     header h1 {
       margin-bottom: 0.3em;
       font-size: 2.5em;
     }
 
+    /* Navigation */
+    nav {
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .menu-toggle {
+      font-size: 1.6em;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.open {
+      transform: rotate(90deg);
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: rgba(29, 38, 64, 0.6);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      max-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 0 2em;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .menu-links.open {
+      max-height: 400px;
+      padding: 1em 2em;
+    }
+
+    .menu-links a {
+      font-family: 'Playfair Display', serif;
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 0.6em 0;
+      font-weight: 500;
+      font-size: 1.1em;
+      position: relative;
+    }
+
+    .menu-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: var(--hover-color);
+      bottom: -4px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    .menu-links a:hover::after {
+      width: 100%;
+    }
+
+    .has-submenu {
+      position: relative;
+    }
+
+    .submenu {
+      list-style: none;
+      padding-left: 1em;
+      margin: 0.3em 0 0.6em 0;
+      display: none;
+      flex-direction: column;
+    }
+
+    .submenu a {
+      font-size: 0.95em;
+      padding: 0.4em 0;
+      color: var(--hover-color);
+    }
+
+    .has-submenu.open .submenu {
+      display: flex;
+    }
+
+    /* Contact Page Layout */
     .container {
       max-width: 900px;
       margin: auto;
@@ -130,138 +221,34 @@
       padding: 1.2em;
       margin-top: 3em;
     }
-
-:root {
-      --bg-color: #2e3a59;
-      --text-color: white;
-      --hover-color: #a3c4f3;
-    }
-
-       nav {
-      background-color: var(--bg-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1em 2em;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    .menu-logo {
-      font-size: 1.5em;
-      color: var(--text-color);
-      font-weight: bold;
-    }
-
-    .menu-toggle {
-      font-size: 1.6em;
-      color: var(--text-color);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .menu-toggle.open {
-      transform: rotate(90deg);
-    }
-
-    .menu-links {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: rgba(29, 38, 64, 0.6);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      overflow: hidden;
-      max-height: 0;
-      display: flex;
-      flex-direction: column;
-      padding: 0 2em;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-    }
-
-    .menu-links.open {
-      max-height: 400px;
-      padding: 1em 2em;
-    }
-
-    .menu-links a {
-      font-family: 'Playfair Display', serif;
-      color: var(--text-color);
-      text-decoration: none;
-      padding: 0.6em 0;
-      font-weight: 500;
-      font-size: 1.1em;
-      position: relative;
-    }
-
-    .menu-links a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background-color: var(--hover-color);
-      bottom: -4px;
-      left: 0;
-      transition: width 0.3s ease;
-    }
-
-    .menu-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Submenu styles */
-    .has-submenu {
-      position: relative;
-    }
-
-    .submenu {
-      list-style: none;
-      padding-left: 1em;
-      margin: 0.3em 0 0.6em 0;
-      display: none;
-      flex-direction: column;
-    }
-
-    .submenu a {
-      font-size: 0.95em;
-      padding: 0.4em 0;
-      color: var(--hover-color);
-    }
-
-    .has-submenu.open .submenu {
-      display: flex;
-    }
-
-      
   </style>
 </head>
+
 <body>
 
   <header>
     <h1>Welcome to Idhant's Studio</h1>
     <p>Your gateway to elegant, expressive music</p>
   </header>
- <nav>
-    
+
+  <nav>
     <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()">☰</div>
+
     <div class="menu-links" id="menu">
       <a href="index.html" onclick="closeMenu()">Home</a>
-      <a href="#about" onclick="closeMenu()">About</a>
-      
+      <a href="about.html" onclick="closeMenu()">About</a>
+
       <div class="has-submenu" onclick="toggleSubmenu(this)">
-        <a href="#music">Photos ▾</a>
+        <a href="#photos">Photos ▾</a>
         <div class="submenu">
-          <a href="#classical" onclick="closeMenu()">certificates</a>
-          <a href="#jazz" onclick="closeMenu()">Extracurriculars</a>
-          <a href="#originals" onclick="closeMenu()">me</a>
+          <a href="photogallery.html" onclick="closeMenu()">Certificates</a>
+          <a href="extracurriculars.html" onclick="closeMenu()">Extracurriculars</a>
+          <a href="me.html" onclick="closeMenu()">Me</a>
         </div>
       </div>
 
-      <a href="#gallery" onclick="closeMenu()">My music</a>
-      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="music.html" onclick="closeMenu()">My Music</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
     </div>
   </nav>
 
@@ -280,8 +267,6 @@
       menu.classList.remove("open");
       toggleBtn.classList.remove("open");
       toggleBtn.textContent = "☰";
-
-      // Close submenu too
       document.querySelectorAll(".has-submenu").forEach(el => el.classList.remove("open"));
     }
 
@@ -292,7 +277,7 @@
 
   <div class="container">
     <div class="contact-form">
-     <form action="https://formspree.io/f/xqalawop" method="POST">
+      <form action="https://formspree.io/f/xqalawop" method="POST">
         <div class="form-group">
           <input type="text" id="name" name="name" placeholder=" " required>
           <label for="name">Full Name</label>
@@ -314,21 +299,18 @@
 
     <div class="info">
       <p><strong>Email:</strong> <a href="mailto:idhantkuvelkar@icloud.com">idhantkuvelkar@icloud.com</a></p>
-      <p><strong>Phone:</strong> 860-534-1956</p>
+      <p><strong>Phone:</strong> 860‑534‑1956</p>
       <p><strong>Location:</strong> Simsbury, Connecticut</p>
     </div>
 
-     <div class="map">
+    <div class="map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.341467663559!2d-72.81707918507089!3d41.877031080416846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e6ea918c8ba0fd%3A0x7e4b91ad0d7be194!2sSimsbury%2C%20CT!5e0!3m2!1sen!2sus!4v1612979946068!5m2!1sen!2sus"
-        width="100%"
-        height="400"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
+        loading="lazy"
+        allowfullscreen="">
       </iframe>
     </div>
-
+  </div>
 
   <footer>
     <p>© 2025 Idhant's Studio. Crafted with harmony.</p>
@@ -336,6 +318,3 @@
 
 </body>
 </html>
-
-
-
