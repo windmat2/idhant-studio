@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Junior High Resume Template</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 1em 2em;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+      padding: 0.5em;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1em;
+      text-decoration: none;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2em;
+    }
+
+    section {
+      background-color: white;
+      padding: 40px;
+      margin: 1.5em 0;
+      width: 90%;
+      max-width: 700px;
+      border: 2px solid black;
+      border-radius: 25px;
+      box-shadow: -7px 10px 17px rgba(0,0,0,0.75);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Junior High School Resume Template</h1>
+    <p>A clean, modern resume layout Idhant can update with his own details</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="photogallery.html">Photo Gallery</a>
+    <a href="resume.html">Resume</a>
+  </nav>
+
+  <div class="content">
+
+    <section id="contact">
+      <h2>Contact Information</h2>
+      <p><strong>Name:</strong> Idhant Shenvi Kuvelkar</p>
+      <p><strong>Location:</strong> Simsbury, CT</p>
+      <p><strong>Email:</strong> idhantkuvelkar@icloud.com</p>
+      <p><strong>Phone:</strong> 860-534-1956</p>
+      <p><em>(Replace with your own details as needed)</em></p>
+    </section>
+
+    <section id="objective">
+      <h2>Objective</h2>
+      <p>Motivated junior high school student seeking opportunities to grow academically, contribute to community programs, and develop musical and technical skills.</p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p><strong>School Name</strong>, Town, CT</p>
+      <p>Expected Graduation: <em>Year</em></p>
+      <ul>
+        <li>English Language Arts</li>
+        <li>Mathematics</li>
+        <li>Science</li>
+        <li>Social Studies</li>
+        <li>Music / Piano Studies</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Piano performance (classical + modern)</li>
+        <li>Creativity and problem-solving</li>
+        <li>Teamwork and collaboration</li>
+        <li>Time management</li>
+        <li>Basic coding (optional)</li>
+      </ul>
+    </section>
+
+    <section id="activities">
+      <h2>Extracurricular Activities</h2>
+      <p><strong>Music / Piano</strong></p>
+      <ul>
+        <li>Performances: Moonlight Sonata, Interstellar theme, original compositions</li>
+        <li>Participation in school or community music events</li>
+      </ul>
+
+      <p><strong>Sports / Clubs</strong></p>
+      <ul>
+        <li>List any sports teams, clubs, or groups</li>
+      </ul>
+
+      <p><strong>Community Service</strong></p>
+      <ul>
+        <li>Volunteering activities</li>
+        <li>School service projects</li>
+      </ul>
+    </section>
+
+    <section id="awards">
+      <h2>Achievements & Awards</h2>
+      <ul>
+        <li>Honor Roll (if applicable)</li>
+        <li>Music performance recognitions</li>
+        <li>School awards</li>
+        <li>Certificates or special achievements</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li>Original piano composition (add link)</li>
+        <li>School projects (science fair, writing competitions, etc.)</li>
+      </ul>
+    </section>
+
+    <section id="interests">
+      <h2>Interests</h2>
+      <ul>
+        <li>Music and piano</li>
+        <li>Technology and coding</li>
+        <li>Reading</li>
+        <li>Outdoor activities</li>
+      </ul>
+    </section>
+
+    <section id="references">
+      <h2>References</h2>
+      <p>Available upon request.</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p style="text-align:center; background:#222; color:white; padding:1em;">
+      © 2025 Idhant's Studio. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
