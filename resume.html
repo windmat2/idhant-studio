@@ -22,19 +22,19 @@
       text-align: center;
     }
 
-    nav {
-      background-color: var(--bg-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1em 2em;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      color: white;
-    }
-
+   nav {
+    background-color: #1d2640; /* Fixed missing variable */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+    
     .menu-logo {
       font-size: 1.5em;
       color: var(--text-color);
@@ -165,7 +165,7 @@
    <nav>
     <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()">☰</div>
     <div class="menu-links" id="menu">
-      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="index.html" onclick="closeMenu()">Home</a>
 
       <div class="has-submenu" onclick="toggleSubmenu(this)">
         <a href="#music">Photos ▾</a>
