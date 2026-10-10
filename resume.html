@@ -68,12 +68,48 @@
     <p>A clean, modern resume layout Idhant can update with his own details</p>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="photogallery.html">Photo Gallery</a>
-    <a href="resume.html">Resume</a>
+   <nav>
+    <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()">☰</div>
+    <div class="menu-links" id="menu">
+      <a href="#home" onclick="closeMenu()">Home</a>
+
+      <div class="has-submenu" onclick="toggleSubmenu(this)">
+        <a href="#music">Photos ▾</a>
+        <div class="submenu">
+          <a href="photogallery.html" onclick="closeMenu()">Certificates</a>
+          <a href="#jazz" onclick="closeMenu()">Extracurriculars</a>
+          <a href="#originals" onclick="closeMenu()">Me</a>
+        </div>
+      </div>
+
+      <a href="#gallery" onclick="closeMenu()">My Music</a>
+      <a href="resume.html" onclick="closeMenu()">Resume</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
+    </div>
   </nav>
 
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
+      menu.classList.toggle("open");
+      toggleBtn.classList.toggle("open");
+      toggleBtn.textContent = menu.classList.contains("open") ? "✖" : "☰";
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById("menu");
+      const toggleBtn = document.getElementById("toggleBtn");
+      menu.classList.remove("open");
+      toggleBtn.classList.remove("open");
+      toggleBtn.textContent = "☰";
+      document.querySelectorAll(".has-submenu").forEach(el => el.classList.remove("open"));
+    }
+
+    function toggleSubmenu(element) {
+      element.classList.toggle("open");
+    }
+  </script>
   <div class="content">
 
     <section id="contact">
